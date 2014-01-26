@@ -2,13 +2,14 @@ exec pathogen#infect()
 nmap <silent> <leader>ve :e $MYVIMRC<CR>
 nmap <silent> <leader>vs :so $MYVIMRC<CR>
 
+nmap <LEADER>t :CtrlP<CR>
+
 " Many changes from http://nvie.com/posts/how-i-boosted-my-vim/
 :set tabstop=4
 :set expandtab
 :set autoindent
 :set copyindent
 :set number
-:set bg=dark
 :set guifont=Monaco:h14
 :set lines=42
 :set columns=175
@@ -21,12 +22,21 @@ nmap <silent> <leader>vs :so $MYVIMRC<CR>
 :set colorcolumn=80
 :colorscheme railscasts
 
+autocmd VimEnter * highlight SignColumn guibg=#333333
+autocmd VimEnter * highlight LineNr guibg=#333333
+
+autocmd VimEnter * GitGutterLineHighlightsEnable
+" GitGutter background colors
+autocmd VimEnter * highlight GitGutterAddLine guibg=#333933
+autocmd VimEnter * highlight GitGutterChangeLine guibg=#333339
+autocmd VimEnter * highlight GitGutterDeleteLine guibg=#593333
+
 nmap <LEADER>c !gcc %<CR>
 nmap <LEADER>r !./a.out<CR>
 
 nmap <LEADER>n :NERDTreeToggle<CR>
 
-filetype plugin indent on
+filetype   plugin indent on
 
 nnoremap ; :
 
