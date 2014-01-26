@@ -10,30 +10,33 @@
 [submodule "bundle/vim-gitgutter"]
 	path = bundle/vim-gitgutter
 	url = git@github.com:airblade/vim-gitgutter.git
-[submodule "/Users/jordan/.vim/bundle/vim-airline"]
-	path = /Users/jordan/.vim/bundle/vim-airline
+[submodule "bundle/vim-airline"]
+	path = bundle/vim-airline
 	url = git@github.com:bling/vim-airline.git
-[submodule "/Users/jordan/.vim/bundle/nerdtree"]
-	path = /Users/jordan/.vim/bundle/nerdtree
+[submodule "bundle/nerdtree"]
+	path = bundle/nerdtree
 	url = git@github.com:scrooloose/nerdtree.git
-[submodule "/Users/jordan/.vim/bundle/ctrlp.vim"]
-	path = /Users/jordan/.vim/bundle/ctrlp.vim
+[submodule "bundle/ctrlp.vim"]
+	path = bundle/ctrlp.vim
 	url = git@github.com:kien/ctrlp.vim.git
-[submodule "/Users/jordan/.vim/bundle/taboo.vim"]
-	path = /Users/jordan/.vim/bundle/taboo.vim
+[submodule "bundle/taboo.vim"]
+	path = bundle/taboo.vim
 	url = git@github.com:gcmt/taboo.vim.git
-[submodule "/Users/jordan/.vim/bundle/syntastic"]
-	path = /Users/jordan/.vim/bundle/syntastic
+[submodule "bundle/syntastic"]
+	path = bundle/syntastic
 	url = git@github.com:scrooloose/syntastic.git
-[submodule "/Users/jordan/.vim/bundle/taglist.vim"]
-	path = /Users/jordan/.vim/bundle/taglist.vim
+[submodule "bundle/taglist.vim"]
+	path = bundle/taglist.vim
 	url = git@github.com:vim-scripts/taglist.vim.git
-[submodule "/Users/jordan/.vim/bundle/vim-node"]
-	path = /Users/jordan/.vim/bundle/vim-node
+[submodule "bundle/vim-node"]
+	path = bundle/vim-node
 	url = git@github.com:moll/vim-node.git
-[submodule "/Users/jordan/.vim/bundle/vim-javascript"]
-	path = /Users/jordan/.vim/bundle/vim-javascript
+[submodule "bundle/vim-javascript"]
+	path = bundle/vim-javascript
 	url = git@github.com:pangloss/vim-javascript.git
-[submodule "/Users/jordan/.vim/bundle/vim-coffee-script"]
-	path = /Users/jordan/.vim/bundle/vim-coffee-script
+[submodule "bundle/vim-coffee-script"]
+	path = bundle/vim-coffee-script
 	url = git@github.com:kchmck/vim-coffee-script.git
+[submodule "bundle/vim-multiple-cursors"]
+	path = bundle/vim-multiple-cursors
+	url = git@github.com:terryma/vim-multiple-cursors.git
