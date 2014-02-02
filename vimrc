@@ -31,6 +31,9 @@ autocmd VimEnter * highlight GitGutterAddLine guibg=#333933
 autocmd VimEnter * highlight GitGutterChangeLine guibg=#333339
 autocmd VimEnter * highlight GitGutterDeleteLine guibg=#593333
 
+" Standard Two-space indentation for coffeescript
+autocmd BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
+
 nmap <LEADER>c !gcc %<CR>
 nmap <LEADER>r !./a.out<CR>
 
