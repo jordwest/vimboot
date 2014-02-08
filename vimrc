@@ -39,6 +39,23 @@ nmap <LEADER>r !./a.out<CR>
 
 nmap <LEADER>n :NERDTreeToggle<CR>
 
+" Use arrow keys for managing splits
+nmap <UP> <C-W><UP>
+nmap <DOWN> <C-W><DOWN>
+nmap <LEFT> <C-W><LEFT>
+nmap <RIGHT> <C-W><RIGHT>
+" Shift-Arrowkey splits current file in that direction
+nmap <S-UP> :split<CR>
+nmap <S-DOWN> :split<CR><C-W><DOWN>
+nmap <S-LEFT> :vsplit<CR>
+nmap <S-RIGHT> :vsplit<CR><C-W><RIGHT>
+" Ctrl-Arrowkey deletes the split on that side of the current window
+" expanding the current window in that direction
+nmap <C-UP> <C-W><UP>:q<CR>
+nmap <C-DOWN> <C-W><DOWN>:q<CR>
+nmap <C-LEFT> <C-W><LEFT>:q<CR>
+nmap <C-RIGHT> <C-W><RIGHT>:q<CR>
+
 filetype   plugin indent on
 
 nnoremap ; :

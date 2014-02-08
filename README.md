@@ -17,5 +17,5 @@ Includes the following plugins
 
 Installation:
 
-    git clone https://github.com/jordwest/vimconfig.git ~/.git
+    git clone https://github.com/jordwest/vimconfig.git ~/.vim
     ln -s ~/.vim/vimrc ~/.vimrc
