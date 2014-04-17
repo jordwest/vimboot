@@ -11,8 +11,6 @@ nmap <LEADER>t :CtrlP<CR>
 :set copyindent
 :set number
 :set guifont=Monaco:h14
-:set lines=42
-:set columns=175
 :set shiftwidth=4
 :set shiftround
 :set smartcase
