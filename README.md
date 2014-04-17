@@ -19,3 +19,4 @@ Installation:
 
     git clone https://github.com/jordwest/vimboot.git ~/.vim
     ln -s ~/.vim/vimrc ~/.vimrc
+    git pull --recurse-submodules
