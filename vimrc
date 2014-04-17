@@ -1,3 +1,37 @@
+if has('vim_starting')
+    set nocompatible
+
+    set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
+call neobundle#begin(expand('~/.vim/bundle/'))
+
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+NeoBundle 'tpope/vim-sensible'
+NeoBundle 'flazz/vim-colorschemes'
+NeoBundle 'bkad/CamelCaseMotion'
+NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'moll/vim-node'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'bling/vim-airline'
+NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'terryma/vim-multiple-cursors'
+NeoBundle 'Valloric/YouCompleteMe'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'gcmt/taboo.vim'
+NeoBundle 'SirVer/ultisnips'
+
+call neobundle#end()
+
+filetype plugin indent on
+
+NeoBundleCheck
+
 exec pathogen#infect()
 nmap <silent> <leader>ve :e $MYVIMRC<CR>
 nmap <silent> <leader>vs :so $MYVIMRC<CR>
