@@ -66,6 +66,10 @@ endif
 let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 let g:neocomplcache_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
 let g:neocomplcache_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+let g:neocomplcache_omni_patterns.go = '\h\w*\.\?'
+
+" Don't show the preview/scratch window when displaying a completion
+:set completeopt-=preview
 
 """"""""""""""""""""""""""""""""""""""""""""""
 
