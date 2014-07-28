@@ -8,6 +8,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 
 NeoBundleFetch 'Shougo/neobundle.vim'
 
+NeoBundle 'Shougo/neocomplcache.vim'
 NeoBundle 'tpope/vim-sensible'
 NeoBundle 'flazz/vim-colorschemes'
 NeoBundle 'bkad/CamelCaseMotion'
@@ -21,10 +22,12 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'terryma/vim-multiple-cursors'
-NeoBundle 'Valloric/YouCompleteMe'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'gcmt/taboo.vim'
 NeoBundle 'SirVer/ultisnips'
+NeoBundle 'majutsushi/tagbar'
+NeoBundle 'fatih/vim-go'
+NeoBundle 'Valloric/MatchTagAlways'
 
 call neobundle#end()
 
@@ -33,18 +36,64 @@ filetype plugin indent on
 NeoBundleCheck
 
 exec pathogen#infect()
+
+""""""""""""""" NEOCOMPLCACHE """"""""""""""""
+"Use neocomplcache.
+let g:neocomplcache_enable_at_startup = 1
+" Use smartcase.
+let g:neocomplcache_enable_smart_case = 1
+
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" " <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y>  neocomplcache#close_popup()
+inoremap <expr><C-e>  neocomplcache#cancel_popup()
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" Enable heavy omni completion.
+if !exists('g:neocomplcache_omni_patterns')
+  let g:neocomplcache_omni_patterns = {}
+endif
+let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+let g:neocomplcache_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+let g:neocomplcache_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+
+""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""" KEY COMMANDS/SHORTCUTS """""""""
+" Edit vimrc
 nmap <silent> <leader>ve :e $MYVIMRC<CR>
+
+" Reload vimrc
 nmap <silent> <leader>vs :so $MYVIMRC<CR>
+
+" Quick access to file browser
+nmap <LEADER>n :NERDTreeToggle<CR>
+""""""""""""""""""""""""""""""""""""""""""""""
 
 nmap <LEADER>t :CtrlP<CR>
 
+"""""""""""" GENERAL VIM SETTINGS """""""""""
 " Many changes from http://nvie.com/posts/how-i-boosted-my-vim/
+:set mouse=a      " Enable mouse in supported terminals (iTerm 2 on Mac)
 :set tabstop=4
 :set expandtab
 :set autoindent
 :set copyindent
-:set number
-:set guifont=Monaco:h14
+:set number       " Line numbering
+if has("gui_macvim")
+    :set guifont=Monaco:h14    " MacVim
+else
+    :set guifont=Monospace     " Linux gVim
+endif
 :set shiftwidth=4
 :set shiftround
 :set smartcase
@@ -57,19 +106,23 @@ nmap <LEADER>t :CtrlP<CR>
 autocmd VimEnter * highlight SignColumn guibg=#333333
 autocmd VimEnter * highlight LineNr guibg=#333333
 
+"""""""""""""""" GITGUTTER """"""""""""""""""""""""
 autocmd VimEnter * GitGutterLineHighlightsEnable
 " GitGutter background colors
 autocmd VimEnter * highlight GitGutterAddLine guibg=#333933
 autocmd VimEnter * highlight GitGutterChangeLine guibg=#333339
 autocmd VimEnter * highlight GitGutterDeleteLine guibg=#593333
+""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Standard Two-space indentation for coffeescript
 autocmd BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 
+"""""""""""""""" LANGUAGE SPECIFIC """""""""""""""
+
+"""""""  C  """""""""
 nmap <LEADER>c !gcc %<CR>
 nmap <LEADER>r !./a.out<CR>
-
-nmap <LEADER>n :NERDTreeToggle<CR>
+"""""""""""""""""""""
 
 " Use arrow keys for managing splits
 nmap <UP> <C-W><UP>
