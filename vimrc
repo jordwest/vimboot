@@ -7,7 +7,6 @@ endif
 call neobundle#begin(expand('~/.vim/bundle/'))
 
 NeoBundleFetch 'Shougo/neobundle.vim'
-
 NeoBundle 'Shougo/neocomplcache.vim'
 NeoBundle 'tpope/vim-sensible'
 NeoBundle 'flazz/vim-colorschemes'
@@ -35,21 +34,23 @@ filetype plugin indent on
 
 NeoBundleCheck
 
-exec pathogen#infect()
+"exec pathogen#infect()
+
 
 """"""""""""""" NEOCOMPLCACHE """"""""""""""""
+
 "Use neocomplcache.
 let g:neocomplcache_enable_at_startup = 1
 " Use smartcase.
 let g:neocomplcache_enable_smart_case = 1
 
 " <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+autocmd VimEnter * inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " " <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplcache#close_popup()
-inoremap <expr><C-e>  neocomplcache#cancel_popup()
+autocmd VimEnter * inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+autocmd VimEnter * inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+autocmd VimEnter * inoremap <expr><C-y>  neocomplcache#close_popup()
+autocmd VimEnter * inoremap <expr><C-e>  neocomplcache#cancel_popup()
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
