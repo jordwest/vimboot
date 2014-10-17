@@ -148,6 +148,10 @@ nmap <LEADER>c !gcc %<CR>
 nmap <LEADER>r !./a.out<CR>
 """""""""""""""""""""
 
+"""""" GOLANG """""""
+nmap <LEADER>gd :GoDoc<CR>
+"""""""""""""""""""""
+
 " Use arrow keys for managing splits
 nmap <UP> <C-W><UP>
 nmap <DOWN> <C-W><DOWN>
