@@ -25,8 +25,10 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'gcmt/taboo.vim'
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'majutsushi/tagbar'
-NeoBundle 'fatih/vim-go'
+"NeoBundle 'fatih/vim-go'
 NeoBundle 'Valloric/MatchTagAlways'
+NeoBundle 'othree/html5.vim'
+NeoBundle 'mattn/emmet-vim'
 
 call neobundle#end()
 
@@ -43,6 +45,15 @@ NeoBundleCheck
 let g:neocomplcache_enable_at_startup = 1
 " Use smartcase.
 let g:neocomplcache_enable_smart_case = 1
+
+
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return neocomplcache#smart_close_popup() . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+endfunction
 
 " <TAB>: completion.
 autocmd VimEnter * inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -73,6 +84,11 @@ let g:neocomplcache_omni_patterns.go = '\h\w*\.\?'
 
 """"""""""""""""""""""""""""""""""""""""""""""
 
+""""""""""""" CTRL-P FILE FINDER """""""""""""
+" Use git to list files when available (ignores files in .gitignore)
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+""""""""""""""""""""""""""""""""""""""""""""""
+
 """"""""""""" KEY COMMANDS/SHORTCUTS """""""""
 " Edit vimrc
 nmap <silent> <leader>ve :e $MYVIMRC<CR>
@@ -82,6 +98,9 @@ nmap <silent> <leader>vs :so $MYVIMRC<CR>
 
 " Quick access to file browser
 nmap <LEADER>n :NERDTreeToggle<CR>
+
+" Shortcut for git move (auto-expands current file's directory)
+nmap <LEADER>gm :Gmove <C-r>=expand("%:p:h")<cr>/
 """"""""""""""""""""""""""""""""""""""""""""""
 
 nmap <LEADER>t :CtrlP<CR>
