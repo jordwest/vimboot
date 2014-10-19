@@ -25,10 +25,11 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'gcmt/taboo.vim'
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'majutsushi/tagbar'
-"NeoBundle 'fatih/vim-go'
+NeoBundle 'fatih/vim-go'
 NeoBundle 'Valloric/MatchTagAlways'
 NeoBundle 'othree/html5.vim'
 NeoBundle 'mattn/emmet-vim'
+NeoBundle 'drmikehenry/vim-fontsize'
 
 call neobundle#end()
 
@@ -129,6 +130,20 @@ endif
 
 autocmd VimEnter * highlight SignColumn guibg=#333333
 autocmd VimEnter * highlight LineNr guibg=#333333
+
+""""""""""""" TMUX COMPATIBILITY """"""""""""""""""
+" In case you use vim within tmux, add the following  
+" to your .tmux.conf:
+"set -g default-terminal xterm-256color
+"set-window-option -g xterm-keys on
+
+" source: http://sunaku.github.io/vim-256color-bce.html
+if &term =~ '256color'
+  " disable Background Color Erase (BCE) so that color schemes
+  " render properly when inside 256-color tmux and GNU screen.
+  " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
+  set t_ut=
+endif
 
 """""""""""""""" GITGUTTER """"""""""""""""""""""""
 autocmd VimEnter * GitGutterLineHighlightsEnable
