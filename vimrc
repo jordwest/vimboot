@@ -32,6 +32,8 @@ NeoBundle 'othree/html5.vim'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'drmikehenry/vim-fontsize'
 NeoBundle 'nacitar/terminalkeys.vim'
+NeoBundle 'leafgarland/typescript-vim'
+NeoBundle 'clausreinke/typescript-tools'
 
 call neobundle#end()
 
@@ -91,6 +93,7 @@ let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 let g:neocomplcache_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
 let g:neocomplcache_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 let g:neocomplcache_omni_patterns.go = '\h\w*\.\?'
+let g:neocomplcache_omni_patterns.typescript = '\h\w\.'
 
 " Don't show the preview/scratch window when displaying a completion
 :set completeopt-=preview
@@ -112,8 +115,16 @@ nmap <silent> <leader>vs :so $MYVIMRC<CR>
 " Quick access to file browser
 nmap <LEADER>n :NERDTreeToggle<CR>
 
+" Quick Git commmands
+nmap <LEADER>gs :Gstatus <CR>
+nmap <LEADER>gc :Gcommit <CR>
+
 " Shortcut for git move (auto-expands current file's directory)
 nmap <LEADER>gm :Gmove <C-r>=expand("%:p:h")<cr>/
+
+" Shortcut for make
+nmap <LEADER>m :!make<CR>
+nmap <LEADER>mt :!make test<CR>
 """"""""""""""""""""""""""""""""""""""""""""""
 
 nmap <LEADER>t :CtrlP<CR>
@@ -173,6 +184,11 @@ autocmd VimEnter * highlight GitGutterDeleteLine guibg=#593333
 autocmd BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 
 """""""""""""""" LANGUAGE SPECIFIC """""""""""""""
+
+"""" TYPESCRIPT """"
+au BufRead,BufNewFile *.ts      setlocal filetype=typescript
+set rtp+=~/.vim/bundle/typescript-tools/
+""""""""""""""""""""
 
 """""""  C  """""""""
 nmap <LEADER>c !gcc %<CR>
