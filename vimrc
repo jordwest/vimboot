@@ -28,6 +28,10 @@ NeoBundle 'majutsushi/tagbar'
 NeoBundle 'fatih/vim-go'
 NeoBundle 'Valloric/MatchTagAlways'
 NeoBundle 'plasticboy/vim-markdown'
+NeoBundle 'othree/html5.vim'
+NeoBundle 'mattn/emmet-vim'
+NeoBundle 'drmikehenry/vim-fontsize'
+NeoBundle 'nacitar/terminalkeys.vim'
 
 call neobundle#end()
 
@@ -54,6 +58,15 @@ let g:UltiSnipsJumpForwardTrigger="<s-tab>"
 let g:neocomplcache_enable_at_startup = 1
 " Use smartcase.
 let g:neocomplcache_enable_smart_case = 1
+
+
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return neocomplcache#smart_close_popup() . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+endfunction
 
 " <TAB>: completion.
 autocmd VimEnter * inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -84,6 +97,11 @@ let g:neocomplcache_omni_patterns.go = '\h\w*\.\?'
 
 """"""""""""""""""""""""""""""""""""""""""""""
 
+""""""""""""" CTRL-P FILE FINDER """""""""""""
+" Use git to list files when available (ignores files in .gitignore)
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+""""""""""""""""""""""""""""""""""""""""""""""
+
 """"""""""""" KEY COMMANDS/SHORTCUTS """""""""
 " Edit vimrc
 nmap <silent> <leader>ve :e $MYVIMRC<CR>
@@ -93,6 +111,9 @@ nmap <silent> <leader>vs :so $MYVIMRC<CR>
 
 " Quick access to file browser
 nmap <LEADER>n :NERDTreeToggle<CR>
+
+" Shortcut for git move (auto-expands current file's directory)
+nmap <LEADER>gm :Gmove <C-r>=expand("%:p:h")<cr>/
 """"""""""""""""""""""""""""""""""""""""""""""
 
 nmap <LEADER>t :CtrlP<CR>
@@ -122,6 +143,23 @@ endif
 
 autocmd VimEnter * highlight SignColumn guibg=#333333
 autocmd VimEnter * highlight LineNr guibg=#333333
+
+""""""""""""" TMUX COMPATIBILITY """"""""""""""""""
+" In case you use vim within tmux, add the following  
+" to your .tmux.conf:
+"set-window-option -g xterm-keys on
+
+if &term =~ '^screen'
+    " tmux knows the extended mouse mode
+    " from http://superuser.com/questions/549930/cant-resize-vim-splits-inside-tmux
+    set ttymouse=xterm2
+
+    " tmux will send xterm-style keys when its xterm-keys option is on
+    execute "set <xUp>=\e[1;*A"
+    execute "set <xDown>=\e[1;*B"
+    execute "set <xRight>=\e[1;*C"
+    execute "set <xLeft>=\e[1;*D"
+endif
 
 """""""""""""""" GITGUTTER """"""""""""""""""""""""
 autocmd VimEnter * GitGutterLineHighlightsEnable
