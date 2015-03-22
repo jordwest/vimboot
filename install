@@ -2,4 +2,6 @@
 
 echo "Installing $2 by $1"
 cd ~/.vim
-git submodule add git@github.com:$1/$2.git bundle/$2
+git submodule init
+git submodule update 
+

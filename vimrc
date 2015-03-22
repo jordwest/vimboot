@@ -27,6 +27,7 @@ NeoBundle 'SirVer/ultisnips'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'fatih/vim-go'
 NeoBundle 'Valloric/MatchTagAlways'
+NeoBundle 'plasticboy/vim-markdown'
 
 call neobundle#end()
 
@@ -36,6 +37,16 @@ NeoBundleCheck
 
 "exec pathogen#infect()
 
+"""""""" Multiple Cursors """""""
+" Don't quit multiple cursors mode leaving insert mode
+let g:multi_cursor_exit_from_insert_mode = 0
+
+" Don't quit multiple cursors mode leaving visual mode
+let g:multi_cursor_exit_from_visual_mode = 0
+
+""""""" ULTISNIPS """"""
+let g:UltiSnipsExpandTrigger="<s-tab>"
+let g:UltiSnipsJumpForwardTrigger="<s-tab>"
 
 """"""""""""""" NEOCOMPLCACHE """"""""""""""""
 
@@ -95,7 +106,8 @@ nmap <LEADER>t :CtrlP<CR>
 :set copyindent
 :set number       " Line numbering
 if has("gui_macvim")
-    :set guifont=Monaco:h14    " MacVim
+    ":set guifont=Monaco:h14    " MacVim
+    :set guifont=M+\ 1mn\ light:h16
 else
     :set guifont=Monospace     " Linux gVim
 endif
@@ -177,6 +189,7 @@ let g:tex_flavor='latex'
 let g:Tex_ViewRule_pdf = 'Preview'
 " Treat .m files at Objective-C instead of matlab
 let filetype_m='objc'
+autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 " Code alignment
 " use <LEADER>a or :Align
 command! -nargs=? -range Align <line1>,<line2>call AlignSection('<args>')
