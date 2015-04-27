@@ -52,6 +52,10 @@ let g:multi_cursor_exit_from_visual_mode = 0
 let g:UltiSnipsExpandTrigger="<s-tab>"
 let g:UltiSnipsJumpForwardTrigger="<s-tab>"
 
+"""""" AIRLINE """""""
+" Use powerline font
+let g:airline_powerline_fonts = 1
+
 """"""""""""""" NEOCOMPLCACHE """"""""""""""""
 
 "Use neocomplcache.
